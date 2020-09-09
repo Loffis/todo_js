@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo</title>
+
+</head>
+
+<body>
+    <h1>TODO</h1>
+    <form id="input-id">
+        <table>
+            <td>Task<br>Max 200 chars</td>
+            <td><textarea id="task" name="task" rows="6" cols="70" minlength="5" maxlength="200" placeholder="Please enter a task" required="true"></textarea></td>
+            <tr>
+                <td><input type="submit" value="Create Todo" id="btn-create"></td>
+            </tr>
+        </table>
+    </form>
+
+
+
+    <button id="btn-view">View all Todos</button>
+
+    <div id="tasks"></div>
+
+
+
+    <script src="todo.js"></script>
+</body>
+
+</html>
