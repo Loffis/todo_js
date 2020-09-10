@@ -43,6 +43,8 @@ function displayTodos() {
     divTasks.appendChild(displayedTodos);
 }
 
+/** deleteTodo funkar inte till 100%. Eftersom index inte stämmer med ID alltid */
+
 function deleteTodo() {
     let idToDelete = prompt("Delete which one?");
     if (isNaN(idToDelete)) {
