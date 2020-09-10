@@ -1,10 +1,13 @@
 let todos = [];
 let form = document.getElementById("input-id");
 let divTasks = document.getElementById("tasks");
+let divMessages = document.getElementById("messages");
+let messages = document.createElement("h3");
 let displayedTodos = document.createElement("p");
 let viewButton = document.getElementById("btn-view");
+let deleteButton = document.getElementById("btn-delete");
 
-let id = 0;
+let id = -1;
 let task = "";
 let isDone = false;
 
@@ -16,6 +19,7 @@ function Todo(task) {
 
 form.addEventListener("submit", onSubmit);
 viewButton.addEventListener("click", displayTodos);
+deleteButton.addEventListener("click", deleteTodo);
 
 function onSubmit(event) {
     event.preventDefault();
@@ -36,7 +40,22 @@ function displayTodos() {
             "<br>Finished: " + todos[i].isDone +
             "<br>Task: " + todos[i].task + "<br>";
     }
-
     divTasks.appendChild(displayedTodos);
+}
 
+function deleteTodo() {
+    let idToDelete = prompt("Delete which one?");
+    if (isNaN(idToDelete)) {
+        messages.innerText = "Not a valid number!";
+        divMessages.appendChild(messages);
+    } else if (todos.some(todo => {
+            return todo.id == idToDelete;
+        })) {
+        messages.innerText = "";
+        todos.splice(idToDelete, 1);
+        alert("Todo with id " + idToDelete + " deleted.");
+    } else {
+        messages.innerText = "ID not found!";
+        divMessages.appendChild(messages);
+    }
 }
